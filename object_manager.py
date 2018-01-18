@@ -6,12 +6,13 @@ import urllib3
 class InfobloxManager(object):
 
     def __init__(self):
-        self.wapi_url = "https://10.254.40.245/wapi/v2.3.1/"
-        self.username = "admin"
-        self.password = "weller"
+        # can alter below to prompt users for sensitive information
+        self.wapi_url = "https://url_of_appliance/wapi/v2.3.1/"
+        self.username = "username"
+        self.password = "password"
 
     def create_a_record(self, ip, name, dns_view="External",
-                        auth_zone=".umcptest.com"):
+                        auth_zone=".test.zone"):
         name = name + auth_zone
         req_params = {"ipv4addr": ip, "name": name, "view": dns_view}
         print(req_params)
@@ -25,7 +26,7 @@ class InfobloxManager(object):
         return(new_record)
 
     def delete_a_record(self, ip, name, dns_view="External",
-                        auth_zone=".umcptest.com"):
+                        auth_zone=".test.zone"):
         name = name + auth_zone
         req_params = {"ipv4addr": ip, "name": name, "view": dns_view}
         record_delete = requests.get(self.wapi_url + "record:a",
