@@ -35,7 +35,6 @@ class InfobloxManager(object):
             record_search = record_search.json()
             if record_search:
                 return(print("CNAME already exists for: %s" % (primary)))
-                exit()
         req_params = {primary_type: primary, secondary_type: secondary,
                       "view": self.dns_view}
 
@@ -143,4 +142,4 @@ def name_check(name):
         return(name)
 
 requests.packages.urllib3.disable_warnings()
-# supress irrelevant messages to enduser
+# suppress irrelevant messages to end user
